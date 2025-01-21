@@ -14,9 +14,27 @@ config/name="energy Clicker"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+
+[display]
+
+window/size/viewport_width=1128
+window/size/viewport_height=615
+
 [dotnet]
 
 project/assembly_name="energy Clicker"
+
+[file_customization]
+
+folder_colors={
+"res://scenes/": "green"
+}
 
 [rendering]
 
