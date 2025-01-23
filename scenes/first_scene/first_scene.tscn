@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://brfa3jqora1u3"]
+
+[ext_resource type="Script" path="res://scenes/first_scene/first_scene.gd" id="1_mrg62"]
+[ext_resource type="FontFile" uid="uid://bptkdyooo45lf" path="res://assets/fonts/CratoMono-Regular.ttf" id="2_0xm5u"]
+[ext_resource type="Texture2D" uid="uid://cb31lyugwu7am" path="res://assets/images/background.png" id="2_r64o1"]
+[ext_resource type="Texture2D" uid="uid://c5gwd0pj1ht2m" path="res://assets/images/energyClickButon.png" id="2_wgl2s"]
+[ext_resource type="Script" path="res://scenes/first_scene/texture_button.gd" id="4_6tls1"]
+[ext_resource type="AudioStream" uid="uid://dhjy8nqs758hw" path="res://assets/sounds/220178__gameaudio__click.wav" id="5_rtkfn"]
+[ext_resource type="AudioStream" uid="uid://ct5mv714qfymw" path="res://assets/sounds/220180__gameaudio__click-pop.wav" id="6_8mhu3"]
+[ext_resource type="AudioStream" uid="uid://s8shnkyg2c4" path="res://assets/sounds/220196__gameaudio__click-wooden-2.wav" id="7_6gyc8"]
+[ext_resource type="AudioStream" uid="uid://bmvko1c2mnt5d" path="res://assets/sounds/220197__gameaudio__click-basic.wav" id="8_daftf"]
+[ext_resource type="AudioStream" uid="uid://cjr06lun2dnyw" path="res://assets/sounds/220208__gameaudio__click-pop-two-part.wav" id="9_82n6i"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ebxie"]
+streams_count = 5
+stream_0/stream = ExtResource("5_rtkfn")
+stream_1/stream = ExtResource("6_8mhu3")
+stream_2/stream = ExtResource("7_6gyc8")
+stream_3/stream = ExtResource("8_daftf")
+stream_4/stream = ExtResource("9_82n6i")
+
+[node name="FirstScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mrg62")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -32.0
+offset_right = 15.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r64o1")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -207.5
+offset_right = 187.0
+offset_bottom = -157.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_0xm5u")
+theme_override_font_sizes/font_size = 40
+text = "Energy : <value>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+texture_normal = ExtResource("2_wgl2s")
+script = ExtResource("4_6tls1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureButton"]
+stream = SubResource("AudioStreamRandomizer_ebxie")
+max_polyphony = 6
